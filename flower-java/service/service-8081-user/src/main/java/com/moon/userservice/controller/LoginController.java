@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 
-//TODO  退出登录  URL:http://localhost:8081/api/user/logout  get
-
+//TODO URL http://localhost:8081/api/user/register  post
 @RestController
 @CrossOrigin
 @RequestMapping("/api/")
@@ -24,18 +23,18 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("user/login")
-    public R login(@RequestBody User user){
+    public R login(@RequestBody User user) {
         //登录
         return loginService.login(user);
     }
 
     @RequestMapping("user/logout")
-    public R logout(){
+    public R logout() {
         return loginService.logout();
     }
 
     @PostMapping("user/register")
-    public R register(@RequestBody User user){
+    public R register(@RequestBody User user) {
         return loginService.register(user);
 
     }

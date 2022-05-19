@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="common-utils" />
+        <module name="service-8082-flower" />
         <module name="service-base" />
         <module name="service-8081-user" />
-        <module name="common-utils" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +19,7 @@
       <module name="common-utils" options="-parameters" />
       <module name="service" options="-parameters" />
       <module name="service-8081-user" options="-parameters" />
+      <module name="service-8082-flower" options="-parameters" />
       <module name="service-base" options="-parameters" />
     </option>
   </component>

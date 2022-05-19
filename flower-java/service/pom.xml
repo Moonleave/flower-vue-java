@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>service-8081-user</module>
+        <module>service-8082-flower</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 
@@ -67,6 +68,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

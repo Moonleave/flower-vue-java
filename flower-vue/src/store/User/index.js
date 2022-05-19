@@ -1,4 +1,4 @@
-import { reqUserLogin, reqUserInfo } from "@/api/index";
+import { reqUserLogin, reqUserInfo  ,reqLogout} from "@/api/index";
 import { setToken, removeToken } from '@/utils/token';
 // user小仓库
 const user = {
@@ -32,14 +32,14 @@ const user = {
         async userLogin({ commit }, data) {
             // console.log("前端登录请求发送出去了")
             let result = await reqUserLogin(data);
-            console.log("后端传来的结果是：", result)
+            // console.log("后端传来的结果是：", result)
             if (result.code == 200) {
-                console.log("响应码为200")
+                // console.log("响应码为200")
                 // console.log("result.data=",result.data)
-                console.log("result.data.token=", result.data.token)
+                // console.log("result.data.token=", result.data.token)
                 commit("USERLOGIN", result.data.token);
-                console.log("user-token已经设置完毕了")
-                console.log("准备向localstorage设置token")
+                // console.log("user-token已经设置完毕了")
+                // console.log("准备向localstorage设置token")
                 setToken(result.data.token)
             }
             else {
@@ -63,12 +63,12 @@ const user = {
         //获取用户信息
         async getUserInfo({ commit }) {
             let result = await reqUserInfo();
-            console.log("我是js,我得到的用户信息result=", result)
-            console.log("result.code=", result.code)
+            // console.log("我是js,我得到的用户信息result=", result)
+            // console.log("result.code=", result.code)
             if (result.code == 200) {
                 const userInfo = { ...result.data.userInfo }
-                console.log("我是js,我得到的数据result.userInfo=", userInfo)
-                console.log("我准备提交给仓库userInfo")
+                // console.log("我是js,我得到的数据result.userInfo=", userInfo)
+                // console.log("我准备提交给仓库userInfo")
                 commit("GETUSERINFO", userInfo);
                 return userInfo;
             }

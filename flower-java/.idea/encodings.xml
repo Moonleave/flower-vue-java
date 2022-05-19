@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/common/common-utils/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/service-base/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service-8081-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-8082-flower/src/main/java" charset="UTF-8" />
   </component>
 </project>

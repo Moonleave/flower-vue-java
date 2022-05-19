@@ -6,6 +6,7 @@ import user from '@/store/User/index.js'
 
 import detail from '@/store/detail/index.js'
 
+
 export default new Vuex.Store({
     modules:{
         user,

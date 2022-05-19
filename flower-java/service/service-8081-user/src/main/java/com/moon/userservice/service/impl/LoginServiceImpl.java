@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -36,9 +39,14 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private RedisCache redisCache;
+
+    @Autowired
+    private UserServiceImpl userService;
 
 
     @Override
@@ -63,11 +71,36 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public R logout() {
-        return null;
+        //获取SecurityContextHolder中的用户id
+        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        Long userid = loginUser.getUser().getId();
+        //删除redis中的值
+        redisCache.deleteObject("login:"+userid);
+        return R.ok().code(200).message("注销成功");
     }
 
     @Override
     public R register(User user) {
-        return null;
+        String registerUserName = user.getUserName();
+        String registerPassword = user.getPassword();
+        System.out.println("后端读取到你要注册的用户名是"+registerUserName+"   密码是"+registerPassword);
+        User userJudge = userService.selectByUsername(registerUserName);
+        System.out.println("userJudge=="+userJudge);
+        if (userJudge!=null){
+            return R.error().message("用户名已被注册").code(201);
+        }
+        else {
+            //获取密码编码器
+            //将用户的密码进行编码
+            String password = passwordEncoder.encode(registerPassword);
+            System.out.println("你输入的密码是:"+registerPassword);
+            System.out.println("加密后的密码是:"+password);
+            //将编码后的密码覆盖到用户信息中
+            user.setPassword(password);
+            //将用户信息持久化到数据库中
+            userService.save(user);
+            return R.ok().code(200).message("用户注册成功");
+        }
     }
 }

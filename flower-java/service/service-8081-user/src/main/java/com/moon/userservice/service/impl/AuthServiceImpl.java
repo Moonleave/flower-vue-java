@@ -1,5 +1,6 @@
 package com.moon.userservice.service.impl;
 
+import com.moon.commonutils.R;
 import com.moon.userservice.entity.User;
 import com.moon.userservice.service.AuthService;
 import com.moon.userservice.service.UserService;
@@ -40,7 +41,8 @@ public class AuthServiceImpl implements AuthService {
         //根据用户id获取操作权限值
         result.put("userName",user.getUserName());
         result.put("phoneNumber",user.getPhonenumber());
-
+        result.put("userMoney",user.getUserMoney());
         return result;
     }
+
 }

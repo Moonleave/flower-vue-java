@@ -21,5 +21,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public User selectByUsername(String username) {
         return baseMapper.selectOne(new QueryWrapper<User>().eq("user_name", username));
     }
-
 }

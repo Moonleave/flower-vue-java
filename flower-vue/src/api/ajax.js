@@ -24,7 +24,7 @@ requests.interceptors.request.use((config) => {
     config.headers.token = store.state.user.token;
   }
   if (localStorage.getItem('TOKEN')) {
-    console.log("我拦截器准备设置token头了")
+    // console.log("我拦截器准备设置token头了")
     config.headers.token = localStorage.getItem('TOKEN')
   }
 

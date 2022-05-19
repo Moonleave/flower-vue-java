@@ -72,5 +72,8 @@ public class User implements Serializable {
     @ApiModelProperty(value = "删除标志（0代表未删除，1代表已删除）")
     private Integer delFlag;
 
+    @ApiModelProperty(value = "用户的钱，初始化10000")
+    private Integer userMoney;
+
 
 }

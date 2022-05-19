@@ -32,14 +32,14 @@ public class UserMapperTest {
     public void TestBCryptPasswordEncoder(){
 
 //        $2a$10$npv5JSeFR6/wLz8BBMmSBOMb8byg2eyfK4/vvoBk3RKtTLBhIhcpy
-
+//        $2a$10$agN9gJf45dRUL7VHUIeGj./yWdr5rheLrNFsmeYDBeJZ9zhEHEUT2
 //        输入的是1234，但是数据库里的是$2a$10$npv5JSeFR6/wLz8BBMmSBOMb8byg2eyfK4/vvoBk3RKtTLBhIhcpy
-        System.out.println(passwordEncoder.
-                matches("1234",
-                        "$2a$10$npv5JSeFR6/wLz8BBMmSBOMb8byg2eyfK4/vvoBk3RKtTLBhIhcpy"));
-//        String encode = passwordEncoder.encode("1234");
+//        System.out.println(passwordEncoder.
+//                matches("123456",
+//                        "$2a$10$cdE.IScIxCZ1ZIPzuDlY/.pV00qDvMPv3NCTPApMDWsO9tNu1YP3S"));
+        String encode = passwordEncoder.encode("djq");
 //        String encode2 = passwordEncoder.encode("1234");
-//        System.out.println(encode);
+        System.out.println(encode);
 //        System.out.println(encode2);
 
     }

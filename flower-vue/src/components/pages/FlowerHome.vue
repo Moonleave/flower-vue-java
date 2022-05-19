@@ -16,7 +16,7 @@
               >
             </li>
             <li>
-              <a id="explorePage" class="menua" href="javascript:;"
+              <a @click="RouterLanguage" id="explorePage" class="menua" href="javascript:;"
                 ><span class="c-menu__inner">探索花海</span></a
               >
             </li>
@@ -31,7 +31,7 @@
               >
             </li>
             <li v-if="userName" id="userNameBoder">
-              <a class="menua" href="javascript:;"
+              <a @click="RouterPersonCenter" class="menua" href="javascript:;"
                 ><span class="c-menu__inner">{{ userName }}</span></a
               >
             </li>
@@ -68,9 +68,18 @@ export default {
   methods: {
     // 点击登录按钮跳转到登录页面
     RouterLogin() {
-      console.log("RouterLogin正在执行，准备跳转到登录页，跳转路径为：/login");
+      // console.log("RouterLogin正在执行，准备跳转到登录页，跳转路径为：/login");
       this.$router.push("/login");
       console.log("跳转login正常");
+    },
+    RouterLanguage(){
+      // console.log("RouterLanguage正在执行，准备跳转到花海世界，跳转路径为：/home/flowerLanguage")
+      this.$router.push("/home/flowerLanguage");
+      console.log("跳转正常");
+
+    },
+    RouterPersonCenter(){
+this.$router.push("/home/personCenter")
     },
     toHome() {
       this.$router.push("/");

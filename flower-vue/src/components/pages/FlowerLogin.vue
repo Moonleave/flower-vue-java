@@ -10,7 +10,11 @@
         placeholder="密码"
       />
       <button @click="handleLogin">登录</button>
-      <span>没有账号？<a href="#">去注册</a></span>
+      <span
+        >没有账号？<a @click="RouterflowerRegister()" href="javascript:;"
+          >去注册</a
+        ></span
+      >
     </div>
 
     <div class="square">
@@ -43,8 +47,10 @@ export default {
   name: "FlowerLogin",
   data() {
     return {
-      userName: "mike",
-      password: "1234",
+      // userName: "mike",
+      userName: "",
+      password: "",
+      // password: "1234",
       userId: "",
     };
   },
@@ -53,7 +59,7 @@ export default {
       try {
         // 登陆成功
         const { userName, password } = this;
-        console.log("开始向后端发送登录请求");
+        // console.log("开始向后端发送登录请求");
         userName &&
           password &&
           (await this.$store.dispatch("userLogin", { userName, password }));
@@ -62,12 +68,15 @@ export default {
           this.$store.state.user.token
         );
         // 登录成功要跳转到首页
-        this.$router.push('/home')
+        this.$router.push("/home");
         // let result = await this.$store.dispatch("getUserInfo");
       } catch (error) {
         console.log(error);
         // 登录失败
       }
+    },
+    RouterflowerRegister() {
+      this.$router.push("/home/flowerRegister");
     },
   },
 };
